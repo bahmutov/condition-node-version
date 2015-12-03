@@ -1,15 +1,15 @@
 {
   "name": "condition-node-version",
-  "version": "1.0.0",
   "description": "Plugin for semantic-release that only allows publishing from a specific NodeJS version",
   "main": "index.js",
   "scripts": {
     "test": "standard",
-    "commit": "commit-wizard"
+    "commit": "commit-wizard",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bahmutov/condition-node-version.git"
+    "url": "https://github.com/bahmutov/condition-node-version.git"
   },
   "keywords": [
     "npm",
@@ -20,6 +20,12 @@
     "plugin",
     "condition"
   ],
+  "release": {
+    "verifyConditions": {
+      "path": "index.js",
+      "node": "4.2.2"
+    }
+  },
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "license": "MIT",
   "bugs": {
@@ -28,12 +34,15 @@
   "homepage": "https://github.com/bahmutov/condition-node-version#readme",
   "devDependencies": {
     "pre-git": "1.4.0",
-    "standard": "5.4.1"
+    "standard": "5.4.1",
+    "semantic-release": "^4.3.5"
   },
   "config": {
     "pre-git": {
       "commit-msg": "validate-commit-msg",
-      "pre-commit": ["npm test"],
+      "pre-commit": [
+        "npm test"
+      ],
       "pre-push": [],
       "post-commit": [],
       "post-merge": []
