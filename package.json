@@ -22,7 +22,7 @@
   ],
   "release": {
     "verifyConditions": {
-      "path": "index.js",
+      "path": "./index.js",
       "node": "4.2.2"
     }
   },
