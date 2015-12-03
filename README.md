@@ -21,7 +21,9 @@ and the module [travis-after-all](https://www.npmjs.com/package/travis-after-all
 to get around this. Unfortunately, this is unreliable. My builds often time out, with some builds
 in the matrix waiting on each other in a circle.
 
-This is why I wrote this plugin. To use:
+This is why I wrote this plugin.
+
+## Install and configuration
 
     npm install --save-dev condition-node-version
 
