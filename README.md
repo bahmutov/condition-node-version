@@ -51,10 +51,25 @@ after_success:
 
 Note that we no longer have to wait on multiple travis jobs, thus it is simple `after_success` call.
 
-In the future, you might be able to combine this plugin with other plugins, see
-[this issue](https://github.com/semantic-release/semantic-release/issues/141). For now, this plugin
-checks the Travis environment, just like the default
-[condition-travis](https://github.com/semantic-release/condition-travis/blob/next/src/index.js) plugin does.
+To combine this plugin with Travis environment check use a list of plugins. For example, to check
+Travis environment and Node version
+
+    npm install --save-dev @semantic-release/condition-travis
+
+Then list the plugins in package.json
+
+```json
+"release": {
+  "verifyConditions": [
+    {
+      "path": "@semantic-release/condition-travis"
+    }, {
+      "path": "condition-node-version",
+      "node": "4.2.2"
+    }
+  ]
+}
+```
 
 ## Notes
 

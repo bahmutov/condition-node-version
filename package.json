@@ -21,10 +21,12 @@
     "condition"
   ],
   "release": {
-    "verifyConditions": {
+    "verifyConditions": [{
+      "path": "@semantic-release/condition-travis"
+    }, {
       "path": "./index.js",
       "node": "4.2.2"
-    }
+    }]
   },
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "license": "MIT",
@@ -33,9 +35,10 @@
   },
   "homepage": "https://github.com/bahmutov/condition-node-version#readme",
   "devDependencies": {
+    "@semantic-release/condition-travis": "4.1.4",
     "pre-git": "1.4.0",
-    "standard": "5.4.1",
-    "semantic-release": "^4.3.5"
+    "semantic-release": "^4.3.5",
+    "standard": "5.4.1"
   },
   "config": {
     "pre-git": {
