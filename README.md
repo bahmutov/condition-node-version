@@ -62,6 +62,11 @@ Because the module can be published from a single version of NodeJS, while the o
 break, you should keep the CI build green to make sure a published version of your module is really
 working for everyone.
 
+## Related
+
+* [condition-circle](https://github.com/bahmutov/condition-circle) is my plugin for semantic-release
+  from CircleCI
+
 ### Small print
 
 Author: Gleb Bahmutov &copy; 2015
