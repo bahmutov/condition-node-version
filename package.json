@@ -5,7 +5,8 @@
   "scripts": {
     "test": "ava test/*.js",
     "lint": "standard",
-    "commit": "commit-wizard",
+    "commit": "git-issues && commit-wizard",
+    "issues": "git-issues",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
@@ -41,6 +42,8 @@
   "devDependencies": {
     "@semantic-release/condition-travis": "4.1.4",
     "ava": "0.7.0",
+    "check-more-types": "2.3.0",
+    "git-issues": "1.2.0",
     "pre-git": "1.4.0",
     "semantic-release": "^4.3.5",
     "standard": "5.4.1"

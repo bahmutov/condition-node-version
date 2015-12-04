@@ -1,5 +1,6 @@
 import test from 'ava'
 import condition from '..'
+import check from 'check-more-types'
 
 test('foo', t => {
   t.pass()
@@ -9,10 +10,18 @@ test('condition', t => {
   t.is(typeof condition, 'function')
 })
 
-// test('bar', async t => {
-//   t.plan(2);
+test.cb('fails without node option', t => {
+  condition({}, {}, function (err, result) {
+    t.ok(err instanceof Error)
+    t.ok(check.unemptyString(err.message))
+    t.end()
+  })
+})
 
-//   const bar = Promise.resolve('bar').then(delay(200));
-
-//   t.is(await bar, 'bar');
-// });
+test.cb('fails for non-matching version', t => {
+  condition({ node: '0.0.0' }, {}, function (err, result) {
+    t.ok(err instanceof Error)
+    t.ok(check.unemptyString(err.message))
+    t.end()
+  })
+})

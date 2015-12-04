@@ -1,9 +1,9 @@
 function conditionNodeVersion (pluginConfig, config, callback) {
-  console.log('cnv config', pluginConfig)
+  console.log('condition node version config', pluginConfig)
 
   if (pluginConfig.verbose || pluginConfig.debug) {
-    console.log('cnv environment', config.env)
-    console.log('cnv options', config.options)
+    console.log('condition environment', config.env)
+    console.log('condition options', config.options)
   }
 
   function fail (message) {
