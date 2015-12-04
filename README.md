@@ -31,7 +31,7 @@ Add the `release` configuration to the package.json, just like
 [semantic-release docs show](https://github.com/semantic-release/semantic-release#plugins). All
 we need is to specify this plugin and the exact version of Node we want to publish from
 
-```json
+```js
 "release": {
   "verifyConditions": {
     "path": "condition-node-version",
