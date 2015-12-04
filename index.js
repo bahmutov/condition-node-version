@@ -1,20 +1,25 @@
-function conditionNodeVersion (options, config, callback) {
-  console.log('plugin options', options)
+function conditionNodeVersion (pluginConfig, config, callback) {
+  console.log('cnv config', pluginConfig)
+
+  if (pluginConfig.verbose || pluginConfig.debug) {
+    console.log('cnv environment', config.env)
+    console.log('cnv options', config.options)
+  }
 
   function fail (message) {
     return callback(new Error(message))
   }
 
-  if (typeof options.node !== 'string') {
+  if (typeof pluginConfig.node !== 'string') {
     return fail('Missing node version in the config')
   }
 
-  if (process.versions.node !== options.node) {
+  if (process.versions.node !== pluginConfig.node) {
     return fail('Only allowed to publish from Node ' +
-      options.node + ' not from ' + process.versions.node)
+      pluginConfig.node + ' not from ' + process.versions.node)
   }
 
-  console.log('ok to publish from this version of Node', options.node)
+  console.log('ok to publish from this version of Node', pluginConfig.node)
 
   callback(null)
 }

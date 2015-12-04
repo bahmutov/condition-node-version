@@ -3,7 +3,8 @@
   "description": "Plugin for semantic-release that only allows publishing from a specific NodeJS version",
   "main": "index.js",
   "scripts": {
-    "test": "standard",
+    "test": "ava test/*.js",
+    "lint": "standard",
     "commit": "commit-wizard",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -21,12 +22,13 @@
     "condition"
   ],
   "release": {
-    "verifyConditions": [{
-      "path": "@semantic-release/condition-travis"
-    }, {
-      "path": "./index.js",
-      "node": "4.2.2"
-    }]
+    "verifyConditions": [
+
+      {
+        "path": "./index.js",
+        "node": "4.2.2"
+      }
+    ]
   },
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "license": "MIT",
@@ -36,6 +38,7 @@
   "homepage": "https://github.com/bahmutov/condition-node-version#readme",
   "devDependencies": {
     "@semantic-release/condition-travis": "4.1.4",
+    "ava": "0.7.0",
     "pre-git": "1.4.0",
     "semantic-release": "^4.3.5",
     "standard": "5.4.1"
@@ -44,6 +47,7 @@
     "pre-git": {
       "commit-msg": "validate-commit-msg",
       "pre-commit": [
+        "npm run lint",
         "npm test"
       ],
       "pre-push": [],

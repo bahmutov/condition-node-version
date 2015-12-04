@@ -35,7 +35,8 @@ we need is to specify this plugin and the exact version of Node we want to publi
 "release": {
   "verifyConditions": {
     "path": "condition-node-version",
-    "node": "4.2.2"
+    "node": "4.2.2",
+    "verbose": true // optional
   }
 }
 ```
