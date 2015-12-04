@@ -23,7 +23,9 @@
   ],
   "release": {
     "verifyConditions": [
-
+      {
+        "path": "@semantic-release/condition-travis"
+      },
       {
         "path": "./index.js",
         "node": "4.2.2"
