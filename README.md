@@ -74,6 +74,21 @@ Then list the plugins in package.json
 }
 ```
 
+You can use semantic ranges in the condition, for example
+
+```json
+"release": {
+  "verifyConditions": [
+    {
+      "path": "condition-node-version",
+      "node": ">=4.2.0"
+    }
+  ]
+}
+```
+
+The check is done using [semver.satisfies](https://github.com/npm/node-semver#ranges-1).
+
 ## Notes
 
 Because the module can be published from a single version of NodeJS, while the other version builds

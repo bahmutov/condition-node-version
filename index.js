@@ -1,11 +1,23 @@
+'use strict'
+
 var semver = require('semver')
 
 function conditionNodeVersion (pluginConfig, config, callback) {
-  console.log('condition node version config', pluginConfig)
+  pluginConfig = pluginConfig || {}
+  config = config || {}
 
-  if (pluginConfig.verbose || pluginConfig.debug) {
-    console.log('condition environment', config.env)
-    console.log('condition options', config.options)
+  function isVerbose () {
+    return pluginConfig.verbose ||
+      pluginConfig.debug ||
+      config.verbose ||
+      config.debug
+  }
+
+  if (isVerbose()) {
+    console.log('condition plugin config', pluginConfig)
+    console.log('condition config environment', config.env)
+    console.log('condition config options', config.options)
+    console.log('node version', process.versions.node)
   }
 
   function fail (message) {
@@ -16,7 +28,7 @@ function conditionNodeVersion (pluginConfig, config, callback) {
     return fail('Missing node version in the config')
   }
 
-  if (semver.satisfies(process.versions.node, pluginConfig.node)) {
+  if (!semver.satisfies(process.versions.node, pluginConfig.node)) {
     return fail('Only allowed to publish from Node ' +
       pluginConfig.node + ' not from ' + process.versions.node)
   }
