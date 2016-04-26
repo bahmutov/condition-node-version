@@ -19,9 +19,16 @@ test.cb('fails without node option', t => {
 })
 
 test.cb('fails for non-matching version', t => {
-  condition({ node: '0.0.0' }, {}, function (err, result) {
+  condition({ node: '4.3.2' }, {}, function (err, result) {
     t.ok(err instanceof Error)
     t.ok(check.unemptyString(err.message))
+    t.end()
+  })
+})
+
+test.cb('passes for matching version ranges', t => {
+  condition({ node: '0.0.0' }, {}, function (err, result) {
+    t.ok(err === null)
     t.end()
   })
 })
