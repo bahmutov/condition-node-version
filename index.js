@@ -1,3 +1,5 @@
+var semver = require('semver')
+
 function conditionNodeVersion (pluginConfig, config, callback) {
   console.log('condition node version config', pluginConfig)
 
@@ -14,7 +16,7 @@ function conditionNodeVersion (pluginConfig, config, callback) {
     return fail('Missing node version in the config')
   }
 
-  if (process.versions.node !== pluginConfig.node) {
+  if (semver.satisfies(process.versions.node, pluginConfig.node)) {
     return fail('Only allowed to publish from Node ' +
       pluginConfig.node + ' not from ' + process.versions.node)
   }
